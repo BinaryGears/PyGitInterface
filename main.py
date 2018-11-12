@@ -25,9 +25,9 @@ commandOptionOne = int(input())
 if commandOptionOne == 1:
     print("Please enter the http address for the repository you would like to clone: ")
     repoHttp = str(input())
-    print("Is", repoHttp, "The correct address? : Y or N")
+    print("Is", repoHttp, "The correct address? : y or n")
     isCorrectAddress = str(input())
-    if isCorrectAddress == "Y":
+    if isCorrectAddress == "y":
         repoHttp = "git clone " + repoHttp
         os.system(repoHttp)
     else:
@@ -38,11 +38,21 @@ elif commandOptionOne == 2:
     commandOptionTwo = int(input())
     if commandOptionTwo == 1:
         print("What would you like the name of the branch to be?: ")
-        branchName = str(input())
-        print("Is", branchName, "correct? : Y or N")
-        isCorrectName = str(input())
-        if isCorrectName == "Y":
-            branchName = "git branch " + branchName
-            os.system(branchName)
+        branchNameCre = str(input())
+        print("Is", branchNameCre, "correct? : y or n")
+        isCorrectNameCre = str(input())
+        if isCorrectNameCre == "y":
+            branchNameCre = "git branch " + branchNameCre
+            os.system(branchNameCre)
+        else:
+            exit()
+    elif commandOptionTwo == 2:
+        print("What branch would you like to delete?: ")
+        branchNameDel = str(input())
+        print("is", branchNameDel, "correct? : y or n")
+        isCorrectNameDel = str(input())
+        if isCorrectNameDel == "y":
+            branchNameDel = "git branch -d " + branchNameDel
+            os.system(branchNameDel)
         else:
             exit()
