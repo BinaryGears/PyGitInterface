@@ -14,15 +14,54 @@
 
 import os
 
-
-print("*----------------------------------------------------------------*")
 print("Please run this program in the directory you need to run git in.")
 
-print("What would you like to do?  1:Clone 2:Branch 3:Status 4:Checkout")
+def py_interface_branch_create():
+    print("What would you like the name of the branch to be?: ")
+    branchNameCre = str(input())
+    print("Is", branchNameCre, "correct? : y or n")
+    isCorrectNameCre = str(input())
+    if isCorrectNameCre == "y":
+        branchNameCre = "git branch " + branchNameCre
+        os.system(branchNameCre)
+        py_interface_branch()
+    else:
+        py_interface_branch()
 
-commandOptionOne = int(input())
+def py_interface_branch_delete():
+    print("What branch would you like to delete?: ")
+    branchNameDel = str(input())
+    print("is", branchNameDel, "correct? : y or n")
+    isCorrectNameDel = str(input())
+    if isCorrectNameDel == "y":
+        branchNameDel = "git branch -d " + branchNameDel
+        os.system(branchNameDel)
+        py_interface_branch()
+    else:
+        py_interface_branch()
 
-if commandOptionOne == 1:
+def py_interface_branch_checkout():
+    print("What branch would you like to go into?: ")
+    py_interface_branch()
+
+def py_interface_branch_status():
+    os.system("git status")
+    py_interface_branch()
+
+def py_interface_branch_add():
+    os.system("git status")
+    print("What would you like to add?: ")
+    gitAdd = str(input())
+    gitAdd = "git add " + gitAdd
+    os.system(gitAdd)
+    py_interface_branch()
+
+
+"""def py_interface_branch_commit():
+def py_interface_branch_push():"""
+
+
+def py_interface_clone():
     print("Please enter the http address for the repository you would like to clone: ")
     repoHttp = str(input())
     print("Is", repoHttp, "The correct address? : y or n")
@@ -31,28 +70,49 @@ if commandOptionOne == 1:
         repoHttp = "git clone " + repoHttp
         os.system(repoHttp)
     else:
-        exit()
+        py_interface_start()
 
-elif commandOptionOne == 2:
-    print("What do you want to do?  1:Create 2:Delete 3:Commit 4:Switch")
-    commandOptionTwo = int(input())
+def py_interface_start():
+    print("What would you like to do?  1:Clone Repository 2:Branch Maintenance 3:Quit")
+    try:
+        commandOptionOne = int(input())
+    except ValueError:
+        commandOptionOne = 4
+    if commandOptionOne == 1:
+        py_interface_clone()
+    elif commandOptionOne == 2:
+        py_interface_branch()
+    elif commandOptionOne == 3:
+        quit()
+    elif commandOptionOne == 4:
+        py_interface_start()
+    else:
+        py_interface_start()
+
+def py_interface_branch():
+    print("What do you want to do?  1:Create 2:Delete 3:Checkout 4:Status 5:Add 6:Commit 7:Push 8:Go Back")
+    try:
+        commandOptionTwo = int(input())
+    except ValueError:
+        commandOptionTwo = 9
     if commandOptionTwo == 1:
-        print("What would you like the name of the branch to be?: ")
-        branchNameCre = str(input())
-        print("Is", branchNameCre, "correct? : y or n")
-        isCorrectNameCre = str(input())
-        if isCorrectNameCre == "y":
-            branchNameCre = "git branch " + branchNameCre
-            os.system(branchNameCre)
-        else:
-            exit()
+        py_interface_branch_create()
     elif commandOptionTwo == 2:
-        print("What branch would you like to delete?: ")
-        branchNameDel = str(input())
-        print("is", branchNameDel, "correct? : y or n")
-        isCorrectNameDel = str(input())
-        if isCorrectNameDel == "y":
-            branchNameDel = "git branch -d " + branchNameDel
-            os.system(branchNameDel)
-        else:
-            exit()
+        py_interface_branch_delete()
+    elif commandOptionTwo == 3:
+        py_interface_branch_checkout()
+    elif commandOptionTwo == 4:
+        py_interface_branch_status()
+    elif commandOptionTwo == 5:
+        py_interface_branch_add()
+    elif commandOptionTwo == 8:
+        py_interface_start()
+    elif commandOptionTwo == 9:
+        py_interface_branch()
+    else:
+        py_interface_branch()
+
+
+
+
+py_interface_start()
