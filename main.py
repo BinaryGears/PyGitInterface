@@ -14,8 +14,6 @@
 
 import os
 
-print("Please run this program in the directory you need to run git in.")
-
 def py_interface_branch_create():
     print("What would you like the name of the branch to be?: ")
     branchNameCre = str(input())
@@ -42,6 +40,9 @@ def py_interface_branch_delete():
 
 def py_interface_branch_checkout():
     print("What branch would you like to go into?: ")
+    checkoutBranch = str(input())
+    checkoutBranch = "git checkout " + checkoutBranch
+    os.system(checkoutBranch)
     py_interface_branch()
 
 def py_interface_branch_status():
@@ -57,9 +58,19 @@ def py_interface_branch_add():
     py_interface_branch()
 
 
-"""def py_interface_branch_commit():
-def py_interface_branch_push():"""
+def py_interface_branch_commit():
+    print("Please add a comment to your commit: ")
+    commitComment = str(input())
+    commitComment = "git commit -m " + commitComment
+    os.system(commitComment)
+    py_interface_branch()
 
+def py_interface_branch_push():
+    print("Please enter the branch name: ")
+    branchName = str(input())
+    branchName = "git push origin " + branchName
+    os.system(branchName)
+    py_interface_branch()
 
 def py_interface_clone():
     print("Please enter the http address for the repository you would like to clone: ")
@@ -74,6 +85,7 @@ def py_interface_clone():
 
 def py_interface_start():
     print("What would you like to do?  1:Clone Repository 2:Branch Maintenance 3:Quit")
+    commandOptionOne = None
     try:
         commandOptionOne = int(input())
     except ValueError:
@@ -91,6 +103,7 @@ def py_interface_start():
 
 def py_interface_branch():
     print("What do you want to do?  1:Create 2:Delete 3:Checkout 4:Status 5:Add 6:Commit 7:Push 8:Go Back")
+    commandOptionTwo = None
     try:
         commandOptionTwo = int(input())
     except ValueError:
@@ -105,6 +118,10 @@ def py_interface_branch():
         py_interface_branch_status()
     elif commandOptionTwo == 5:
         py_interface_branch_add()
+    elif commandOptionTwo == 6:
+        py_interface_branch_commit()
+    elif commandOptionTwo == 7:
+        py_interface_branch_push()
     elif commandOptionTwo == 8:
         py_interface_start()
     elif commandOptionTwo == 9:
@@ -112,7 +129,6 @@ def py_interface_branch():
     else:
         py_interface_branch()
 
-
-
+print("Please run this program in the directory you need to run git in.")
 
 py_interface_start()
