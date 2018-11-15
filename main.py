@@ -63,12 +63,14 @@ def py_interface_branch_commit():
     commitComment = str(input())
     commitComment = "git commit -m " + commitComment
     os.system(commitComment)
+    py_interface_branch()
 
 def py_interface_branch_push():
     print("Please enter the branch name: ")
     branchName = str(input())
     branchName = "git push origin " + branchName
     os.system(branchName)
+    py_interface_branch()
 
 def py_interface_clone():
     print("Please enter the http address for the repository you would like to clone: ")
