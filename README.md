@@ -1,8 +1,6 @@
 # PyGitInterface
 The aim of this program is to create an unofficial and more user friendly interface to the git command prompt. This program is still far from complete. 
-If you would like to contribute there are a few things that need to be completed.
 
-1: All the commands for git need to work from this program in a user friendly way. 
-2: We need to do more error handling and make the program worth using.
+Python 3
 
-More plans are coming in the near future...
+Tested with Python 3.6 32bit
