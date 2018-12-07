@@ -3,4 +3,4 @@ The aim of this program is to create an unofficial and more user friendly interf
 
 Python 3
 
-Tested with Python 3.6 32bit
+Tested with Python 3.6 32-bit
